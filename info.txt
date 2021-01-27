@@ -1,0 +1,36 @@
+service: notes-api
+stage: prod
+region: ap-south-1
+stack: notes-api-prod
+resources: 32
+api keys:
+  None
+endpoints:
+  POST - https://xsbrgc1lzd.execute-api.ap-south-1.amazonaws.com/prod/notes
+  GET - https://xsbrgc1lzd.execute-api.ap-south-1.amazonaws.com/prod/notes/{id}
+  GET - https://xsbrgc1lzd.execute-api.ap-south-1.amazonaws.com/prod/notes
+  PUT - https://xsbrgc1lzd.execute-api.ap-south-1.amazonaws.com/prod/notes/{id}
+  DELETE - https://xsbrgc1lzd.execute-api.ap-south-1.amazonaws.com/prod/notes/{id}
+functions:
+  create: notes-api-prod-create
+  get: notes-api-prod-get
+  list: notes-api-prod-list
+  update: notes-api-prod-update
+  delete: notes-api-prod-delete
+layers:
+  None
+
+
+  Pool Id ap-south-1_WIxsPnqSQ
+  Pool ARN arn:aws:cognito-idp:ap-south-1:004142648186:userpool/ap-south-1_WIxsPnqSQ
+
+  App client id
+7je9lnamif4t31r74pg473urch
+
+test user:
+admin@example.com ---- Password@123
+
+Identity pool ID 
+ap-south-1:e73781c6-3532-44e1-9a3a-43dd24520109
+
+npx aws-api-gateway-cli-test --username admin@example.com --password Password@123 --user-pool-id ap-south-1_WIxsPnqSQ --app-client-id 7je9lnamif4t31r74pg473urch --cognito-region ap-south-1 --identity-pool-id ap-south-1:e73781c6-3532-44e1-9a3a-43dd24520109 --invoke-url https://xsbrgc1lzd.execute-api.ap-south-1.amazonaws.com/prod --api-gateway-region ap-south-1 --path-template /notes --method POST --body "{\"content\":\"hello world\",\"attachment\":\"hello.jpg\"}"
